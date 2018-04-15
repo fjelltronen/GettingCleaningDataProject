@@ -1,0 +1,52 @@
+---
+title: "Getting and Cleaning Data Course Project"
+author: "fjelltronen"
+date: "April 14, 2018"
+output: 
+  html_document:
+    keep_md: true
+---
+
+### Introduction
+
+This Github repo contains the required scripts to collect, work with, and clean the UCI HAR Dataset.
+
+This `README` file explains the analysis files:
+
+* The `CodeBook.md` file describes the variables, the data, and the transformations that are performed on this dataset when using the `run_analysis.R` script.
+
+* The `gcd-tidy-data.txt` contains the tidy data set with the average of each variable for each activity and each subject.
+
+### UCI HAR Dataset
+
+The data used for this project represents data collected from the accelerometers from the Samsung Galaxy S smartphone for the purpose of recognizing human activity using smartphones. More information can be found in `CodeBook.md` or, directly, from the site that hosts the data set (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
+
+### run_analysis.R
+
+This script contains all the steps need to collect, work with, and clean the UCI HAR Dataset.
+
+1. it downloads the .zip archive from the data URL and unzips the downloaded file
+2. reads the feature and activity names from `features.txt` and `activity_labels.txt`
+3. reads the training data
+    * the feature values from `train/X_train.txt` (uses feature names to set column names)
+    * the activity ids from `train/y_train.txt`; then merges with activity_labels to have activity names as well
+    * the subject information from `train/subject_train.txt`
+    * column binds all these data frames into `train`
+3. reads the testing data
+    * the feature values from `train/X_test.txt` (uses feature names to set column names)
+    * the activity ids from `train/y_test.txt`; then merges with activity_labels to have activity names as well
+    * the subject information from `train/subject_test.txt`
+    * column binds all these data frames into `test`
+4. row combines `train` and `test` into `allData`
+5. selects from `allData` only the columns that have *mean* or *std* of measurements; also *activity* and *subject* columns
+6. computes the average of each variable for each activity and each subject into `avgData` and writes this data frame to `gdc-tidy-data.txt`
+
+For more information, check the `CodeBook.md` document.
+
+### gdc-tidy-data.txt
+
+This file contains the final data frame computed to contains the average of each variable for each activity and each subject.
+
+```{r}
+read.table(file="./gcd-tidy-data.txt",nrows = 5)
+```
