@@ -282,7 +282,7 @@ names(avgData)[1:3]
 ## [1] "activity_id" "activity"    "subject"
 ```
 
-All other columns contain the values of the features that contain the *mean* or *std* variable:
+All other columns contain the **average** values of the features that contain the *mean* or *std* variable for each activity and subject (same units as the original feature values): 
 
 
 ```r
