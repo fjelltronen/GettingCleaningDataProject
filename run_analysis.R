@@ -1,7 +1,7 @@
 # download the data file to local disk
-download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","./data/gcd-project.zip")
+download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","./gcd-project.zip")
 # extract the data from the .zip archive
-unzip(zipfile = "./data/gcd-project.zip")
+unzip(zipfile = "./gcd-project.zip")
 
 # read the names of the features into "features"
 features <- read.table("./UCI HAR Dataset/features.txt")
@@ -49,4 +49,4 @@ msData <- subset(allData,select = (grepl("(\\.(mean|std)\\.)|activity|subject",c
 
 # tidy dataset with average of each variable for each activity and each subject
 avgData <- aggregate(msData[,-c(1:3)], msData[,c(1:3)], mean)
-write.table(avgData,file="./gcd-tidy-data.txt")
+write.table(avgData,file="./gcd-tidy-data.txt",row.names = FALSE)

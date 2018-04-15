@@ -62,7 +62,9 @@ Then, the training data is read from the files in the `train` directory.
 
 
 ```r
+# use the feature names as column names (changed slightly to be valid column names)
 train_features<-read.table(file = "./UCI HAR Dataset/train/X_train.txt",col.names = features$V2)
+# 7352 obs. of  561 variables
 str(train_features,list.len=6) ## display the first 6 variables only
 ```
 
@@ -80,16 +82,22 @@ str(train_features,list.len=6) ## display the first 6 variables only
 ```r
 train_labels<-read.table(file="./UCI HAR Dataset/train/y_train.txt",col.names = c("activity_id"))
 train_labels <- merge(train_labels,activities) ## append activity names
-str(train_labels,list.len=6)
+# 7352 obs. of  2 variables
+head(train_labels)
 ```
 
 ```
-## 'data.frame':	7352 obs. of  2 variables:
-##  $ activity_id: int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ activity   : Factor w/ 6 levels "LAYING","SITTING",..: 4 4 4 4 4 4 4 4 4 4 ...
+##   activity_id activity
+## 1           1  WALKING
+## 2           1  WALKING
+## 3           1  WALKING
+## 4           1  WALKING
+## 5           1  WALKING
+## 6           1  WALKING
 ```
 
 ```r
+# 7352 obs. of  1 variable
 train_subjects<-read.table(file="./UCI HAR Dataset/train/subject_train.txt",col.names=c("subject"))
 str(train_subjects,list.len=6)
 ```
@@ -100,6 +108,7 @@ str(train_subjects,list.len=6)
 ```
 
 ```r
+# 7352 obs. of  564 variables
 train<-cbind(train_labels,train_subjects,train_features)
 str(train,list.len=9)
 ```
@@ -122,7 +131,9 @@ Then, the testing data is read from the files in the `test` directory.
 
 
 ```r
+# use the feature names as column names (changed slightly to be valid column names)
 test_features<-read.table(file = "./UCI HAR Dataset/test/X_test.txt",col.names = features$V2)
+# 2947 obs. of  561 variables
 str(test_features,list.len=6) ## display the first 6 variables only
 ```
 
@@ -140,17 +151,23 @@ str(test_features,list.len=6) ## display the first 6 variables only
 ```r
 test_labels<-read.table(file="./UCI HAR Dataset/test/y_test.txt",col.names = c("activity_id"))
 test_labels <- merge(test_labels,activities) ## append activity names
-str(test_labels,list.len=6)
+# 2947 obs. of  2 variables
+head(test_labels)
 ```
 
 ```
-## 'data.frame':	2947 obs. of  2 variables:
-##  $ activity_id: int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ activity   : Factor w/ 6 levels "LAYING","SITTING",..: 4 4 4 4 4 4 4 4 4 4 ...
+##   activity_id activity
+## 1           1  WALKING
+## 2           1  WALKING
+## 3           1  WALKING
+## 4           1  WALKING
+## 5           1  WALKING
+## 6           1  WALKING
 ```
 
 ```r
 test_subjects<-read.table(file="./UCI HAR Dataset/test/subject_test.txt",col.names=c("subject"))
+# 2947 obs. of  1 variable
 str(test_subjects,list.len=6)
 ```
 
@@ -161,6 +178,7 @@ str(test_subjects,list.len=6)
 
 ```r
 test<-cbind(test_labels,test_subjects,test_features)
+# 2947 obs. of  564 variables
 str(test,list.len=9)
 ```
 
@@ -183,6 +201,7 @@ Then, the training data and the testing data are combined into a new data frame 
 
 ```r
 allData<-rbind(train,test)
+# 10299 obs. of 564 variables
 str(allData,list.len=9)
 ```
 
@@ -204,7 +223,9 @@ str(allData,list.len=9)
 
 
 ```r
+# dataset is subset to only certain column names
 msData <- subset(allData,select = (grepl("(\\.(mean|std)\\.)|activity|subject",colnames(allData))))
+# 10299 obs. of 69 variables
 str(msData,list.len=9)
 ```
 
@@ -227,7 +248,8 @@ From this data frame, the tidy data set is computed to have the average of each 
 
 ```r
 avgData <- aggregate(msData[,-c(1:3)], msData[,c(1:3)], mean)
-head(avgData[,1:8])
+# 40 obs. of 69 variables
+head(avgData[,1:9])
 ```
 
 ```
@@ -238,14 +260,12 @@ head(avgData[,1:8])
 ## 4           1          WALKING       4         0.2770345       -0.01334968
 ## 5           2 WALKING_UPSTAIRS       4         0.2696859       -0.01710851
 ## 6           1          WALKING       5         0.2791780       -0.01548335
-##   tBodyAcc.mean...Z tBodyAcc.std...X tBodyAcc.std...Y
-## 1        -0.1078457       -0.5457953       -0.3677162
-## 2        -0.1156500       -0.6055865       -0.4289630
-## 3        -0.1064926       -0.6234136       -0.4800159
-## 4        -0.1059161       -0.6838645       -0.5896093
-## 5        -0.1100534       -0.4811578       -0.3842553
-## 6        -0.1056617       -0.5076910       -0.4027249
+##   tBodyAcc.mean...Z tBodyAcc.std...X tBodyAcc.std...Y tBodyAcc.std...Z
+## 1        -0.1078457       -0.5457953       -0.3677162       -0.5026457
+## 2        -0.1156500       -0.6055865       -0.4289630       -0.5893601
+## 3        -0.1064926       -0.6234136       -0.4800159       -0.6536256
+## 4        -0.1059161       -0.6838645       -0.5896093       -0.7419590
+## 5        -0.1100534       -0.4811578       -0.3842553       -0.6582857
+## 6        -0.1056617       -0.5076910       -0.4027249       -0.6464436
 ```
-
-
 
