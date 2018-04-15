@@ -99,3 +99,17 @@ avgData <- aggregate(msData[,-c(1:3)], msData[,c(1:3)], mean)
 head(avgData[,1:9])
 ```
 
+### Data decription
+
+The first three columns of the tidy data contains the `activity_id`, `activity`, and `subject`:
+
+```{r}
+names(avgData)[1:3]
+```
+
+All other columns contain the values of the features that contain the *mean* or *std* variable:
+
+```{r}
+## 66 variables
+names(avgData)[-(1:3)]
+```

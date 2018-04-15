@@ -295,6 +295,48 @@ head(avgData[,1:9])</code></pre>
 ## 5        -0.1100534       -0.4811578       -0.3842553       -0.6582857
 ## 6        -0.1056617       -0.5076910       -0.4027249       -0.6464436</code></pre>
 </div>
+<div id="data-decription" class="section level3">
+<h3>Data decription</h3>
+<p>The first three columns of the tidy data contains the <code>activity_id</code>, <code>activity</code>, and <code>subject</code>:</p>
+<pre class="r"><code>names(avgData)[1:3]</code></pre>
+<pre><code>## [1] &quot;activity_id&quot; &quot;activity&quot;    &quot;subject&quot;</code></pre>
+<p>All other columns contain the values of the features that contain the <em>mean</em> or <em>std</em> variable:</p>
+<pre class="r"><code>## 66 variables
+names(avgData)[-(1:3)]</code></pre>
+<pre><code>##  [1] &quot;tBodyAcc.mean...X&quot;           &quot;tBodyAcc.mean...Y&quot;          
+##  [3] &quot;tBodyAcc.mean...Z&quot;           &quot;tBodyAcc.std...X&quot;           
+##  [5] &quot;tBodyAcc.std...Y&quot;            &quot;tBodyAcc.std...Z&quot;           
+##  [7] &quot;tGravityAcc.mean...X&quot;        &quot;tGravityAcc.mean...Y&quot;       
+##  [9] &quot;tGravityAcc.mean...Z&quot;        &quot;tGravityAcc.std...X&quot;        
+## [11] &quot;tGravityAcc.std...Y&quot;         &quot;tGravityAcc.std...Z&quot;        
+## [13] &quot;tBodyAccJerk.mean...X&quot;       &quot;tBodyAccJerk.mean...Y&quot;      
+## [15] &quot;tBodyAccJerk.mean...Z&quot;       &quot;tBodyAccJerk.std...X&quot;       
+## [17] &quot;tBodyAccJerk.std...Y&quot;        &quot;tBodyAccJerk.std...Z&quot;       
+## [19] &quot;tBodyGyro.mean...X&quot;          &quot;tBodyGyro.mean...Y&quot;         
+## [21] &quot;tBodyGyro.mean...Z&quot;          &quot;tBodyGyro.std...X&quot;          
+## [23] &quot;tBodyGyro.std...Y&quot;           &quot;tBodyGyro.std...Z&quot;          
+## [25] &quot;tBodyGyroJerk.mean...X&quot;      &quot;tBodyGyroJerk.mean...Y&quot;     
+## [27] &quot;tBodyGyroJerk.mean...Z&quot;      &quot;tBodyGyroJerk.std...X&quot;      
+## [29] &quot;tBodyGyroJerk.std...Y&quot;       &quot;tBodyGyroJerk.std...Z&quot;      
+## [31] &quot;tBodyAccMag.mean..&quot;          &quot;tBodyAccMag.std..&quot;          
+## [33] &quot;tGravityAccMag.mean..&quot;       &quot;tGravityAccMag.std..&quot;       
+## [35] &quot;tBodyAccJerkMag.mean..&quot;      &quot;tBodyAccJerkMag.std..&quot;      
+## [37] &quot;tBodyGyroMag.mean..&quot;         &quot;tBodyGyroMag.std..&quot;         
+## [39] &quot;tBodyGyroJerkMag.mean..&quot;     &quot;tBodyGyroJerkMag.std..&quot;     
+## [41] &quot;fBodyAcc.mean...X&quot;           &quot;fBodyAcc.mean...Y&quot;          
+## [43] &quot;fBodyAcc.mean...Z&quot;           &quot;fBodyAcc.std...X&quot;           
+## [45] &quot;fBodyAcc.std...Y&quot;            &quot;fBodyAcc.std...Z&quot;           
+## [47] &quot;fBodyAccJerk.mean...X&quot;       &quot;fBodyAccJerk.mean...Y&quot;      
+## [49] &quot;fBodyAccJerk.mean...Z&quot;       &quot;fBodyAccJerk.std...X&quot;       
+## [51] &quot;fBodyAccJerk.std...Y&quot;        &quot;fBodyAccJerk.std...Z&quot;       
+## [53] &quot;fBodyGyro.mean...X&quot;          &quot;fBodyGyro.mean...Y&quot;         
+## [55] &quot;fBodyGyro.mean...Z&quot;          &quot;fBodyGyro.std...X&quot;          
+## [57] &quot;fBodyGyro.std...Y&quot;           &quot;fBodyGyro.std...Z&quot;          
+## [59] &quot;fBodyAccMag.mean..&quot;          &quot;fBodyAccMag.std..&quot;          
+## [61] &quot;fBodyBodyAccJerkMag.mean..&quot;  &quot;fBodyBodyAccJerkMag.std..&quot;  
+## [63] &quot;fBodyBodyGyroMag.mean..&quot;     &quot;fBodyBodyGyroMag.std..&quot;     
+## [65] &quot;fBodyBodyGyroJerkMag.mean..&quot; &quot;fBodyBodyGyroJerkMag.std..&quot;</code></pre>
+</div>
 
 
 
